@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { getVisualMeta } from '@/lib/visuals';
 
 const eras = [
   { slug: 'pre-state-kievan', label: 'Pre-State & Kievan Rus\'', years: 'c. 750–1240' },
@@ -12,8 +11,6 @@ const eras = [
 ];
 
 export default function RussiaHistoryLanding() {
-  const kievanHero = getVisualMeta('kievan-rus-hero');
-
   return (
     <div className="min-h-screen bg-[#f8f5f0] text-[#1a1816]">
       <nav className="border-b border-[#d4c9b8] bg-white/80 backdrop-blur sticky top-0 z-50">
@@ -21,8 +18,10 @@ export default function RussiaHistoryLanding() {
           <div className="font-medium">RussiaHistory.org</div>
           <div className="flex gap-6 text-[#5c5146]">
             <a href="#eras">Eras</a>
+            <a href="/demo/reader">Reader Demo</a>
+            <a href="/visuals">Visuals</a>
+            <a href="/about">About</a>
             <a href="/design">Design</a>
-            <a href="https://github.com" target="_blank">GitHub</a>
           </div>
         </div>
       </nav>
@@ -48,25 +47,31 @@ export default function RussiaHistoryLanding() {
           <a href="/demo/reader" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             View Live Reader Demo
           </a>
+          <a href="/demo/interactive" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
+            Interactive Timeline + Visuals
+          </a>
           <a href="/design" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             Read the Full Design Document
           </a>
         </div>
 
-        {/* Hero Visual */}
+        {/* Hero Visual - using one of our generated complementary assets */}
         <div className="mt-16">
           <div className="text-xs uppercase tracking-widest text-[#5c5146] mb-2">
             COMPLEMENTARY VISUAL — KIEVAN RUS' ERA
           </div>
           <div className="relative aspect-[16/9] bg-black overflow-hidden rounded-sm shadow-2xl">
             <img 
-              src={`/assets/visuals/${kievanHero.file}`} 
-              alt={kievanHero.altText}
+              src="/assets/visuals/kievan-rus-hero.jpg" 
+              alt="Atmospheric view of a medieval Slavic river settlement with wooden churches at sunset."
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-10">
               <div className="max-w-2xl text-white text-lg">
-                {kievanHero.extendedDescription}
+                A tranquil golden-hour scene of an early medieval East Slavic trading settlement along the Dnieper. Multiple wooden churches with characteristic onion domes rise among thatched buildings.
+              </div>
+              <div className="text-[10px] mt-3 text-white/70">
+                This image is atmospheric only. All historical claims are made in the text with full citations.
               </div>
             </div>
           </div>
@@ -77,27 +82,41 @@ export default function RussiaHistoryLanding() {
           <div className="uppercase tracking-[2px] text-sm text-[#5c5146] mb-6">EXPLORE BY ERA</div>
           
           <div className="grid md:grid-cols-2 gap-4">
-            {eras.map((era) => (
+            {eras.map((era, index) => (
               <Link 
                 key={era.slug}
-                href={`/${era.slug}/origins-of-kievan-rus`}
+                href={index === 0 ? "/demo/reader" : "/demo/reader-mongol"}
                 className="group block border border-[#d4c9b8] p-6 rounded hover:border-[#3f372f] transition-colors"
               >
                 <div className="flex justify-between items-baseline">
                   <div className="text-xl group-hover:underline">{era.label}</div>
                   <div className="text-xs text-[#5c5146] font-mono">{era.years}</div>
                 </div>
-                <div className="text-sm text-[#5c5146] mt-1">Begin with sample chapter →</div>
+                <div className="text-sm text-[#5c5146] mt-1">View sample chapter with visuals →</div>
               </Link>
             ))}
           </div>
         </div>
 
+        <div className="mt-20 grid md:grid-cols-3 gap-6">
+          <div>
+            <img src="/assets/visuals/winter-palace-interior.jpg" alt="Winter Palace interior" className="rounded shadow" />
+            <div className="text-xs mt-2 text-[#5c5146]">Late Imperial power and isolation</div>
+          </div>
+          <div>
+            <img src="/assets/visuals/siberian-dawn.jpg" alt="Siberian landscape" className="rounded shadow" />
+            <div className="text-xs mt-2 text-[#5c5146]">The scale of the Gulag system (use with care)</div>
+          </div>
+          <div>
+            <img src="/assets/visuals/petrograd-1917.jpg" alt="Petrograd 1917" className="rounded shadow" />
+            <div className="text-xs mt-2 text-[#5c5146]">February 1917 — the old world cracking</div>
+          </div>
+        </div>
+
         <div className="mt-16 text-xs text-[#5c5146] max-w-prose">
-          This is an early but functional build of the platform described in the design document. 
-          All content follows strict scholarly standards (minimum two historians per interpretive claim, 
-          explicit debate presentation, full primary source apparatus). 
-          Visuals are complementary only.
+          This is a rapidly advancing build toward a complete scholarly platform. 
+          All sample content follows the strict standards in the design document. 
+          Visuals are purely complementary — the knowledge lives in the text.
         </div>
       </main>
 

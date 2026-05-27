@@ -1,6 +1,53 @@
+'use client';
+
+import React from 'react';
+import { useReaderStore } from '@/stores/useReaderStore';
+
 export default function ReaderDemo() {
+  const { mode, setMode } = useReaderStore();
+  const [progress, setProgress] = React.useState(0);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+      setProgress(Math.min(100, Math.max(0, progress)));
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const bgClass = mode === 'sepia' ? 'bg-[#f4e9d8]' : mode === 'dark' ? 'bg-[#1a1816] text-[#f8f5f0]' : 'bg-[#f8f5f0] text-[#1a1816]';
+
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16 bg-[#f8f5f0] min-h-screen text-[#1a1816]">
+    <div className={`${bgClass} min-h-screen transition-colors`}>
+      {/* Reading Progress */}
+      <div className="fixed top-0 left-0 right-0 h-px bg-[#d4c9b8] z-50">
+        <div 
+          className="h-px bg-[#3f372f] transition-all duration-100" 
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
+      <div className="max-w-3xl mx-auto px-6 py-16">
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <div className="text-xs tracking-[2px] text-[#5c5146]">PRE-STATE &amp; KIEVAN RUS' • NARRATIVE</div>
+            <h1 className="text-5xl font-medium tracking-tight mt-2">The Origins of Kievan Rus'</h1>
+          </div>
+          
+          <div className="flex gap-1 text-xs border rounded">
+            {(['light', 'sepia', 'dark'] as const).map(m => (
+              <button 
+                key={m}
+                onClick={() => setMode(m)}
+                className={`px-3 py-1 capitalize ${mode === m ? 'bg-[#3f372f] text-white' : ''}`}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
+        </div>
       <div className="mb-12">
         <div className="text-xs tracking-[2px] text-[#5c5146]">PRE-STATE &amp; KIEVAN RUS' • NARRATIVE</div>
         <h1 className="text-5xl font-medium tracking-tight mt-2 mb-4">The Origins of Kievan Rus'</h1>
@@ -49,6 +96,18 @@ export default function ReaderDemo() {
       <div className="mt-16 pt-8 border-t text-xs text-[#5c5146]">
         This is a demonstration of the scholarly reader experience described in the design document. 
         All interpretive claims are supported by multiple prominent historians with explicit presentation of historiographical debates.
+      </div>
+
+      <div className="mt-8">
+        <button 
+          onClick={() => {
+            navigator.clipboard.writeText("Plokhy, Serhii. \"The Origins of Kievan Rus'.\" RussiaHistory.org, 2026.");
+            alert("Citation copied to clipboard (demo)");
+          }}
+          className="text-sm px-4 py-2 border border-[#3f372f] rounded hover:bg-white"
+        >
+          Export Citation (Chicago)
+        </button>
       </div>
     </div>
   );
