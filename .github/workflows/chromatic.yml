@@ -1,0 +1,43 @@
+name: Visual Regression (Chromatic)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  chromatic:
+    name: Chromatic
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for Chromatic to detect changes
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      # Build Storybook first (recommended for stability)
+      - run: pnpm run build-storybook
+
+      # Run Chromatic
+      - name: Publish to Chromatic
+        uses: chromaui/action@latest
+        with:
+          # Chromatic project token - set as repo secret: CHROMATIC_PROJECT_TOKEN
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          exitOnceUploaded: true
+          # Only run on PRs and main for now
+          onlyChanged: true
+        # This step is allowed to fail initially until the Chromatic project is set up
+        continue-on-error: true
