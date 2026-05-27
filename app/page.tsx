@@ -109,6 +109,15 @@ export default function RussiaHistoryLanding() {
                 </Link>
               );
             })}
+
+            {/* Thematic & Deep Soviet Essays */}
+            <div className="col-span-2 mt-4">
+              <div className="uppercase tracking-[2px] text-sm text-[#5c5146] mb-3">Thematic &amp; Deeper Soviet Essays</div>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <Link href="/demo/reader-collectivization" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Collectivization &amp; Holodomor</Link>
+                <Link href="/demo/reader-ww2" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Eastern Front / Great Patriotic War</Link>
+              </div>
+            </div>
           </div>
         </div>
 
