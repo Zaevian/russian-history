@@ -86,17 +86,23 @@ export default function RussiaHistoryLanding() {
           
           <div className="grid md:grid-cols-2 gap-4">
             {eras.map((era, index) => {
-              const href = index === 0 ? "/demo/reader" : 
-                          index === 1 ? "/demo/reader-mongol" : 
-                          index === 3 ? "/demo/reader-imperial" : "/demo/reader";
+              const hrefs = [
+                "/demo/reader",
+                "/demo/reader-mongol",
+                "/demo/reader-imperial",
+                "/demo/reader-revolutionary",
+                "/demo/reader-soviet",
+                "/demo/reader-post-soviet",
+                "/demo/reader",
+              ];
               return (
                 <Link 
                   key={era.slug}
-                  href={href}
+                  href={hrefs[index] || "/demo/reader"}
                   className="group block border border-[#d4c9b8] p-6 rounded hover:border-[#3f372f] transition-colors"
                 >
                   <div className="flex justify-between items-baseline">
-                    <div className="text-xl group-hover:underline">{era.label.replace("'", "&apos;")}</div>
+                    <div className="text-xl group-hover:underline">{era.label}</div>
                     <div className="text-xs text-[#5c5146] font-mono">{era.years}</div>
                   </div>
                   <div className="text-sm text-[#5c5146] mt-1">View sample chapter with visuals →</div>
