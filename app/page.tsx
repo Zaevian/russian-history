@@ -90,10 +90,10 @@ export default function RussiaHistoryLanding() {
                 "/demo/reader",
                 "/demo/reader-mongol",
                 "/demo/reader-imperial",
+                "/demo/reader-reforms",
                 "/demo/reader-revolutionary",
                 "/demo/reader-soviet",
-                "/demo/reader-post-soviet",
-                "/demo/reader",
+                "/demo/reader-1990s",
               ];
               return (
                 <Link 
