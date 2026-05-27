@@ -1,0 +1,49 @@
+name: Content Validation (Scholarly Model Enforcement)
+
+on:
+  pull_request:
+    paths:
+      - 'content/**'
+      - 'data/**'
+      - 'content/debates/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: npm ci  # assumes zod and content loader in package.json
+
+      - name: Validate all content frontmatter against schemas
+        run: node scripts/validate-content.js
+
+      - name: Check debate coverage for thematic essays
+        run: node scripts/check-debates.js
+
+      - name: Validate primary source apparatus
+        run: node scripts/validate-apparatus.js
+
+      - name: Ensure minimum historians and citations
+        run: node scripts/check-citations.js
+
+      - name: Link check + debate ID existence
+        run: node scripts/check-links.js
+
+      - name: Post detailed report as PR comment (on failure)
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Content validation failed. See workflow logs for Zod errors, missing debates, or apparatus issues. Fix before merge.'
+            })

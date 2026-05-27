@@ -1,0 +1,17 @@
+{
+  "slot": 1,
+  "title": "Kievan Rus' Era Hero",
+  "file": "kievan-rus-hero.jpg",
+  "type": "image",
+  "ratio": "16:9",
+  "placement": "Era landing page hero (under title, above first chapter)",
+  "purpose": "Immediate sense of place and scale for the earliest period most readers know least about.",
+  "prompt": "Highly detailed, atmospheric historical illustration in the style of a premium art history textbook plate. Early medieval Kievan Rus' settlement on the banks of the Dnieper river at golden hour. Wooden onion-domed churches, thatched longhouses, trading boats on the river, distant forested hills. Soft warm light, mist rising from the water, no modern elements whatsoever. Painterly yet historically accurate, rich earth tones, cinematic composition, 16:9 wide format, museum quality, no text, no people in foreground.",
+  "generationDate": "2026-05-27",
+  "altText": "Atmospheric view of a medieval Slavic river settlement with wooden churches at sunset.",
+  "extendedDescription": "A tranquil golden-hour scene of an early medieval East Slavic trading settlement along the Dnieper. Multiple wooden churches with characteristic onion domes rise among thatched buildings. Small boats are visible on the river. The image conveys scale, early state formation, and the river as the lifeblood of Kievan Rus' without any anachronistic elements.",
+  "historianReviewer": null,
+  "status": "Generated",
+  "sensitivity": "standard",
+  "notes": "Excellent first hero image. Very strong sense of place. Recommended for prominent use."
+}

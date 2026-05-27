@@ -1,0 +1,67 @@
+{
+  "debates": [
+    {
+      "id": "rus-origins-normanist",
+      "title": "The Origins of the Rus': Normanist vs. Anti-Normanist Interpretations",
+      "question": "Were the Rus' primarily Varangian (Scandinavian) warriors who conquered and ruled over Slavic tribes, or was the polity an indigenous East Slavic development with limited external influence?",
+      "positions": [
+        {
+          "label": "Normanist thesis (external conquest and state formation)",
+          "historians": ["Pipes", "Lieven"],
+          "summary": "The invitation of the Varangians in the Primary Chronicle reflects a real historical event. Scandinavian elites (Rurikids) established the first political structures and introduced concepts of rulership alien to local Slavic customs.",
+          "keyWorks": ["Pipes, Russia Under the Old Regime (1974), ch. 2", "Lieven, The Russian Empire (2001), introduction"]
+        },
+        {
+          "label": "Anti-Normanist / indigenous development thesis",
+          "historians": ["Plokhy", "Kivelson"],
+          "summary": "The Rus' emerged from a complex interaction of Slavic agricultural communities, Khazar tribute systems, and Baltic trade networks. The 'Varangian' element was one among many and quickly assimilated; state formation was a gradual process of local elites.",
+          "keyWorks": ["Plokhy, The Gates of Europe (2015), ch. 2-3", "Kivelson & Suny, Russia's Empires (2017)"]
+        }
+      ],
+      "resolutionNotes": "Current scholarly consensus (as of 2025) favors a hybrid model: significant Scandinavian participation in the 9th-10th centuries, rapid cultural integration, and state formation driven primarily by local economic and political dynamics. The debate is now more about the degree and speed of assimilation than a binary 'conquest or not'.",
+      "lastReviewed": "2025-11-12"
+    },
+    {
+      "id": "ivan-iv-oprichnina",
+      "title": "The Oprichnina: Rational State-Building or Paranoid Terror?",
+      "question": "Was Ivan IV's oprichnina (1565–1572) a deliberate instrument of centralization and modernization against boyar opposition, or primarily the product of personal paranoia and sadism with destructive long-term consequences?",
+      "positions": [
+        {
+          "label": "Instrument of rational state-building",
+          "historians": ["Hellie", "Kollmann"],
+          "summary": "The oprichnina was a calculated response to structural problems of Muscovite autocracy — weak institutions, powerful appanage princes, and the need to fund the Livonian War. It targeted specific social groups and laid groundwork for later service state institutions.",
+          "keyWorks": ["Hellie, Enserfment and Military Change in Muscovy (1971)", "Kollmann, The Russian Empire 1450-1801 (2017)"]
+        },
+        {
+          "label": "Paranoid terror with catastrophic costs",
+          "historians": ["Figes", "Plokhy"],
+          "summary": "The oprichnina was an expression of Ivan's personal pathologies, fueled by guilt over his son's death and fear of boyar conspiracies. It destroyed the old elite without creating stable new institutions and left Russia weakened for the Time of Troubles.",
+          "keyWorks": ["Figes, Natasha's Dance (2002), ch. 1", "Plokhy, The Gates of Europe (2015), ch. 8"]
+        }
+      ],
+      "resolutionNotes": "Most modern historians (2020s) see elements of both: a rational core of anti-boyar policy that spiraled into uncontrolled violence due to Ivan's mental state and the lack of institutional restraints. The economic and demographic damage is undisputed.",
+      "lastReviewed": "2025-09-03"
+    },
+    {
+      "id": "1917-contingency",
+      "title": "1917: Inevitable Revolutionary Outcome or Contingent Catastrophe?",
+      "question": "Was the Bolshevik seizure of power and subsequent civil war the inevitable result of deep structural contradictions in late Imperial Russia, or a highly contingent outcome that could have been avoided with different decisions in 1917?",
+      "positions": [
+        {
+          "label": "Deep structural inevitability",
+          "historians": ["Pipes", "Applebaum"],
+          "summary": "Autocracy, rapid uneven industrialization, peasant land hunger, and the strains of total war made some form of revolutionary collapse probable. The old regime had no viable reform path that could satisfy both elites and masses simultaneously.",
+          "keyWorks": ["Pipes, The Russian Revolution (1990)", "Applebaum, Red Famine (2017) — contextual chapters"]
+        },
+        {
+          "label": "Contingent catastrophe",
+          "historians": ["Fitzpatrick", "Figes"],
+          "summary": "February 1917 was a broad popular revolution with multiple possible outcomes. The October coup succeeded due to specific missteps by the Provisional Government, war weariness, and Lenin's tactical brilliance and ruthlessness — not structural destiny. Alternative paths (democratic republic or moderate socialist coalition) were realistic in spring/summer 1917.",
+          "keyWorks": ["Fitzpatrick, The Russian Revolution (3rd ed., 2017)", "Figes, A People's Tragedy (1996)"]
+        }
+      ],
+      "resolutionNotes": "The dominant view among Western and many Russian historians since the 1990s is contingency: the specific form of Soviet power was not predetermined. Structural factors made revolution likely, but the Bolshevik dictatorship and its particular character were products of 1917–1921 decisions and contingencies.",
+      "lastReviewed": "2025-10-15"
+    }
+  ]
+}
