@@ -30,7 +30,7 @@ const sampleContent = [
 
 export default function SiteSearch() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<any[]>([]); // eslint-disable-line @typescript-eslint/no-explicit-any
 
   const fuse = new Fuse(sampleContent, {
     keys: ['title', 'excerpt', 'era'],

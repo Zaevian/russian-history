@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const eras = [
-  { slug: 'pre-state-kievan', label: 'Pre-State & Kievan Rus\'', years: 'c. 750–1240' },
+  { slug: 'pre-state-kievan', label: 'Pre-State & Kievan Rus', years: 'c. 750–1240' },
   { slug: 'mongol-muscovy', label: 'Mongol Yoke & Rise of Muscovy', years: '1240–1613' },
   { slug: 'tsardom-empire', label: 'Tsardom & Early Empire', years: '1613–1801' },
   { slug: 'imperial', label: 'Imperial Russia', years: '1801–1917' },
@@ -50,6 +50,9 @@ export default function RussiaHistoryLanding() {
           <a href="/demo/interactive" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             Interactive Timeline + Visuals
           </a>
+          <a href="/demo/genealogy" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
+            Genealogy Tree Demo
+          </a>
           <a href="/design" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             Read the Full Design Document
           </a>
@@ -82,19 +85,24 @@ export default function RussiaHistoryLanding() {
           <div className="uppercase tracking-[2px] text-sm text-[#5c5146] mb-6">EXPLORE BY ERA</div>
           
           <div className="grid md:grid-cols-2 gap-4">
-            {eras.map((era, index) => (
-              <Link 
-                key={era.slug}
-                href={index === 0 ? "/demo/reader" : "/demo/reader-mongol"}
-                className="group block border border-[#d4c9b8] p-6 rounded hover:border-[#3f372f] transition-colors"
-              >
-                <div className="flex justify-between items-baseline">
-                  <div className="text-xl group-hover:underline">{era.label}</div>
-                  <div className="text-xs text-[#5c5146] font-mono">{era.years}</div>
-                </div>
-                <div className="text-sm text-[#5c5146] mt-1">View sample chapter with visuals →</div>
-              </Link>
-            ))}
+            {eras.map((era, index) => {
+              const href = index === 0 ? "/demo/reader" : 
+                          index === 1 ? "/demo/reader-mongol" : 
+                          index === 3 ? "/demo/reader-imperial" : "/demo/reader";
+              return (
+                <Link 
+                  key={era.slug}
+                  href={href}
+                  className="group block border border-[#d4c9b8] p-6 rounded hover:border-[#3f372f] transition-colors"
+                >
+                  <div className="flex justify-between items-baseline">
+                    <div className="text-xl group-hover:underline">{era.label.replace("'", "&apos;")}</div>
+                    <div className="text-xs text-[#5c5146] font-mono">{era.years}</div>
+                  </div>
+                  <div className="text-sm text-[#5c5146] mt-1">View sample chapter with visuals →</div>
+                </Link>
+              );
+            })}
           </div>
         </div>
 

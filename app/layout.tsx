@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import SiteSearch from "@/components/SiteSearch";
 
 export const metadata: Metadata = {
   title: "RussiaHistory.org — A Scholarly History of Russia",
@@ -19,16 +18,12 @@ export default function RootLayout({
     <html lang="en" className="antialiased">
       <body className="font-serif">
         <nav className="border-b bg-white/80 backdrop-blur sticky top-0 z-50 text-sm">
-          <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between gap-4">
-            <a href="/" className="font-medium shrink-0">RussiaHistory.org</a>
-            
-            <div className="flex-1 max-w-sm">
-              <SiteSearch />
-            </div>
-
-            <div className="flex gap-5 text-[#5c5146] shrink-0">
+          <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+            <a href="/" className="font-medium">RussiaHistory.org</a>
+            <div className="flex gap-5 text-[#5c5146]">
               <a href="/demo/reader">Reader</a>
               <a href="/demo/interactive">Interactive</a>
+              <a href="/demo/genealogy">Genealogy</a>
               <a href="/visuals">Visuals</a>
               <a href="/about">About</a>
               <a href="/design">Design</a>

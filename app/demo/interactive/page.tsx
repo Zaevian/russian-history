@@ -1,8 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useReaderStore } from '@/stores/useReaderStore';
 
 const timelineEvents = [
   {
@@ -37,18 +35,11 @@ const timelineEvents = [
 
 export default function InteractiveTimeline() {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const { mode } = useReaderStore();
 
   const currentEvent = timelineEvents[selectedIndex];
 
-  const bgClass = 
-    mode === 'sepia' ? 'bg-[#f4e9d8]' : 
-    mode === 'dark' ? 'bg-[#111]' : 'bg-[#f8f5f0]';
-
-  const textClass = mode === 'dark' ? 'text-[#f8f5f0]' : 'text-[#1a1816]';
-
   return (
-    <div className={`min-h-screen ${bgClass} ${textClass} transition-colors duration-300`}>
+    <div className="min-h-screen bg-[#f8f5f0] text-[#1a1816]">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="mb-8">
           <div className="uppercase tracking-[2px] text-xs text-[#5c5146]">INTERACTIVE DEMO</div>
@@ -86,13 +77,8 @@ export default function InteractiveTimeline() {
 
           {/* Detail Panel with Visual */}
           <div className="lg:col-span-3">
-            <AnimatePresence mode="wait">
-              <motion.div
+              <div
                 key={selectedIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
                 className="bg-white rounded-2xl overflow-hidden border border-[#d4c9b8] shadow-sm"
               >
                 <div className="relative aspect-[16/9]">
@@ -117,8 +103,7 @@ export default function InteractiveTimeline() {
                     This moment is explored in depth in the full scholarly chapters (see design document for content plan).
                   </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
           </div>
         </div>
 
