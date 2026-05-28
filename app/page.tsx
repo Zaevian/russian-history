@@ -51,6 +51,9 @@ export default function RussiaHistoryLanding() {
           <Link href="/demo/interactive" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             Interactive Timeline + Visuals
           </Link>
+          <Link href="/demo/maps" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
+            Historical Maps (Early Prototype)
+          </Link>
           <Link href="/demo/genealogy" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             Genealogy Tree Demo
           </Link>
@@ -129,6 +132,9 @@ export default function RussiaHistoryLanding() {
                 <Link href="/demo/reader-1990s-reforms" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">1990s Shock Therapy &amp; Oligarchs</Link>
                 <Link href="/demo/reader-putin" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">The Putin Era</Link>
                 <Link href="/demo/reader-orthodoxy" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Orthodoxy and the State (Thematic)</Link>
+                <Link href="/demo/reader-ww2-homefront" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">WWII Soviet Home Front</Link>
+                <Link href="/demo/reader-economy" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Russian Economy Through Time (Thematic)</Link>
+                <Link href="/demo/maps" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Historical Maps Explorer</Link>
               </div>
             </div>
           </div>

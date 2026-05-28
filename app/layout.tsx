@@ -24,6 +24,7 @@ export default function RootLayout({
             <div className="flex gap-5 text-[#5c5146]">
               <a href="/demo/reader">Reader</a>
               <a href="/demo/interactive">Interactive</a>
+              <a href="/demo/maps">Maps</a>
               <a href="/demo/genealogy">Genealogy</a>
               <a href="/visuals">Visuals</a>
               <a href="/about">About</a>

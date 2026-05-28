@@ -50,7 +50,9 @@
     "title": "Grand Prince of Kiev",
     "parent": "sviatoslav",
     "x": 600,
-    "y": 180
+    "y": 180,
+    "description": "Baptized in 988, bringing Christianity to the Rus'. One of the most important rulers in early Russian history.",
+    "chapterLink": "/demo/reader"
   },
   {
     "id": "yaroslav",
