@@ -5,21 +5,71 @@
 **Status:** Draft  
 **Version:** 1.0  
 **Project Code:** 08f36848  
-**Review Status:** Initial design for greenfield implementation
+**Review Status:** Initial design for greenfield implementation (heavily revised for actual delivered scope)
 
 ---
 
-## Overview
+## ACTUAL IMPLEMENTATION REALITY — Updated (Late May 2026)
 
-RussiaHistory.org will be a world-class, open-access digital textbook and reference platform delivering the complete history of Russia from pre-state East Slavic tribes (6th–9th centuries), through the Khazar Khaganate, Varangian Rus', Kievan Rus', the Mongol yoke, the rise and consolidation of Muscovy, the Tsardom of Russia, Imperial Russia (Romanov era), the Revolutionary period (1905–1922), the Soviet Union (1922–1991), and the modern Russian Federation to the present day (2026+).
+**Critical Scope Change (User Direction):**  
+After initial work, the user explicitly clarified and pruned the original vision:
+- **NOT** a heavy multi-author academic submission platform requiring 2+ historians per claim, formal DebateCallout components, PrimarySourceApparatus, Zod-enforced schemas, CI content validation, or Git-based historian review workflows.
+- **Instead:** A high-quality, broad, detailed, trustworthy **single coherent narrative history** written so that "multiple prominent historians would generally agree with" the overall account. Serious textbook tone, but readable for the general serious reader and student. No forced debate apparatus.
 
-The site achieves scholarly rigor equivalent to the multi-volume *Cambridge History of Russia* or the finest single-volume syntheses (e.g., Hosking's *Russia and the Russians* or Plokhy's *The Gates of Europe*). Every major interpretive claim, periodization, and narrative arc is supported by citations to multiple prominent historians, with explicit, balanced presentation of historiographical debates rather than a monolithic narrative. Primary source excerpts (chronicles, law codes, letters, diaries, decrees) are presented with full scholarly apparatus (provenance, translation notes, context).
+**What Was Deleted / Simplified (per "DELETE ANYTHING THAT WAS too much" and "KEEP GOING BUT DELETE"):**
+- Removed heavy `content/` MDX pipeline + Zod schemas (HistorianSchema, DebateRegistry, ContentFrontmatterSchema requiring min 2 historians, PrimarySourceApparatus).
+- Removed DebateCallout, forced citation enforcement, academic PR checklists, and related CI validation.
+- Dropped full Supabase (auth + notes sync), Hypothesis annotation, Typesense semantic search, and complex i18n glossary as source of truth.
+- Abandoned the 18+ PR academic platform roadmap in favor of rapid, high-quality narrative content delivery.
+- Removed most "demo", "prototype", and over-engineered language.
 
-Technically, the platform delivers a premium long-form reading experience with superb variable-font typography, reader modes, inline annotation (via Hypothesis), one-click citation export (BibTeX/RIS/CSL), personal reading lists, highlights, and notes with cross-device sync. Discovery is powered by faceted + hybrid semantic search over the full corpus. Rich interactive scholarly tools include period-accurate historical maps with temporal and thematic layers (built on MapLibre GL + Allmaps IIIF support), genealogical trees for the Rurikids and Romanovs (React Flow), statistical visualizations (D3), and a primary-source archive.
+**What Was Actually Built (Current Delivered State):**
+- Clean Next.js 15 App Router site (TypeScript + Tailwind + Crimson Pro / Inter fonts).
+- **Dramatically simplified navigation** for usability:
+  - Single persistent top nav in `app/layout.tsx`: Eras | Themes | Genealogy | Maps | Visuals | About.
+  - New dedicated hub pages: `/eras` (chronological periods with clear descriptions) and `/themes` (cross-cutting essays).
+  - Homepage (`app/page.tsx`) completely overhauled: calm hero, no duplicate navs, clear "Begin with the Eras" and "Explore Major Themes" CTAs, reduced visual noise.
+- **Substantial narrative content** written directly in React pages (no heavy MDX):
+  - Core eras now have real depth (800–1600+ words each with multiple sections): Kievan Rus', Mongol Yoke & Muscovy, Imperial Russia (19th c focus), Revolutionary Era (1905–1922), The Soviet Century, The 1990s.
+  - Key thematics expanded: The Eastern Front / Great Patriotic War, The Holodomor.
+- **Interactives** delivered as working prototypes (as originally scoped in Key Decisions):
+  - GenealogyTree.tsx (React Flow @xyflow/react v12): Rurikid + Romanov data in JSON, dynasty switcher, lineage highlighting on click, details panel with chapter links.
+  - Maps prototype (MapLibre via @vis.gl/react-maplibre) with period switcher.
+- **Visuals**: All generated complementary assets (Kievan hero, Mongol steppe, Petrograd 1917, Winter Palace, Siberian, etc.) integrated via Next.js `<Image>` optimization in many chapters. Visuals philosophy strictly maintained: atmosphere only.
+- **Dev stability**: `pnpm dev` now uses stable webpack by default (`dev:turbo` available). Removed deprecated experimental.turbo config. .next cache issues resolved.
+- **Tone & Metadata**: Updated to "comprehensive, readable history... broad in scope, rich in detail" (no longer heavy "every claim backed by multiple prominent historians" academic framing).
 
-The architecture supports sustainable phased content production (target: ~120k words / 80 core entries at launch; scaling to 1.5M+ words over 5–7 years), academic peer review via Git-based workflows, WCAG 2.2 AA accessibility, English-primary with Russian bilingual path, and open-access sustainability through grants, institutional subscriptions for premium features, and donations. The entire stack prioritizes performance (sub-2s interactive loads), SEO, and maintainability for a small-to-medium team augmented by academic advisors.
+**Revised Philosophy (User-Confirmed):**  
+Trustworthy, detailed narrative that a serious general reader or student can rely on. Multiple prominent historians would largely agree with the broad account and major interpretive choices, without turning the site into a debate platform or requiring formal scholarly apparatus on every page.
 
-This is a pure greenfield project in `C:\Users\test\documents\russian-history`. No legacy code or data exists.
+**Current Completion Estimate (Narrative Core):**  
+~60-70% of major era spine filled with real depth. Navigation and reading experience now feel clean and professional. Remaining work: full Putin-era expansion + remaining thematics (Autocracy, Nationality, Economy, Orthodoxy, Everyday Soviet) + maps/genealogy polish + final consistency.
+
+**Implications for Future Work:**  
+Continue filling remaining thematic chapters with the same substantial narrative style. Improve the Maps prototype. Do a final polish pass for consistency, navigation, and reading comfort. The target is a site that feels complete and excellent for its focused purpose: a beautiful, detailed, easily navigable history of Russia.
+
+**Desired End State (User Intent):**  
+A calm, professional, high-quality website that lets someone sit down and read the broad, detailed history of Russia from beginning to present in a logical, non-overwhelming way, with helpful interactive tools (genealogy + maps) and atmospheric visuals. Not an academic platform. Not complicated. Substantial content. Easy to navigate. Close to "done" on the core experience.
+
+---
+
+## Original Overview (Retained for Reference Only)
+
+## Overview (Current Desired Scope — What the Site Actually Is)
+
+RussiaHistory.org is a clean, serious, easily navigable digital history of Russia written as a high-quality, broad, detailed narrative from the earliest Slavic settlements through the present day.
+
+The goal is a trustworthy, readable account at the level of an excellent university textbook or the best single-volume histories — substantial depth and nuance, but accessible to a serious general reader or student. The tone is scholarly in substance but not academic in apparatus: interpretive claims are made confidently in a way that multiple prominent historians would generally find solid and agree with, without turning every chapter into a formal debate or requiring explicit multi-source citation machinery on the page.
+
+**Core Experience:**
+- Simple, elegant navigation centered on two main hubs: **Eras** (clear chronological journey) and **Themes** (cross-cutting essays on autocracy, empire, war, economy, daily life, etc.).
+- Long-form narrative chapters with real substance (multiple sections, proper historical sweep, integrated complementary visuals).
+- Two signature interactive tools: an interactive Genealogy explorer (Rurikids + Romanovs with lineage highlighting) and a Historical Maps prototype.
+- All visuals are strictly atmospheric and complementary — never presented as evidence.
+
+The site prioritizes clarity, readability, and navigability over complex academic infrastructure. Content is written directly as high-quality prose in the current Next.js structure. The project aims for a feeling of "close to completion" on the core narrative spine and key interactives rather than an endlessly expandable scholarly platform.
+
+This matches the user's explicit direction: broad detailed history, easily navigable, substantial reader content, simplified scope, no over-engineering.
 
 ---
 
@@ -53,62 +103,52 @@ The motivation is scholarly and civic: to create a durable, authoritative, freel
 
 ---
 
-## Goals & Non-Goals
+## Goals & Non-Goals (Revised to Match Actual Desired Scope)
 
-### Goals
-- Deliver comprehensive chronological coverage (pre-862 to 2026) plus 8–12 thematic deep-dive clusters (e.g., "The Evolution of Autocracy," "Peasants and Serfdom," "Intellectuals and the State," "War and Society," "Gender and Family," "Nationalities and Empire," "Religion and Secularization," "Economy and Modernization").
-- Surface and fairly present major historiographical controversies with citations to opposing scholars.
-- Provide 150–300 primary source excerpts with metadata, translation notes, and contextual essays at launch (scaled over time).
-- Implement production-grade interactive scholarly tools: 20+ historical maps with 3–5 layers each, 4–6 full genealogical trees, 15+ statistical/time-series visualizations, faceted+semantic search, annotation, citation export.
-- Achieve premium reading experience: variable fonts, 55–75ch optimal measure, reader modes, progress tracking, offline-capable core reading, WCAG 2.2 AA.
-- Support sustainable content operations: Git-based authoring + academic review workflow; phased rollout across 8 content phases (conservative launch target 80–100k words of core narrative + apparatus per Content Production Plan appendix).
-- Technical: <1.8s LCP / <3s TTI on 4G for article pages; search p95 <250ms hybrid; support 10k+ daily active users at launch with headroom to 100k.
-- Sustainability: Clear CC-BY-NC-SA (or similar) licensing for text; public-domain + properly attributed images; open core + optional premium (advanced exports, institutional dashboards, curated reading paths); grant/donation funding model.
+### Goals (What We Are Actually Building)
+- Deliver a complete, readable narrative history of Russia from pre-state period through the present, organized cleanly into major **Eras** and **Themes**.
+- Write substantial, detailed chapters (multiple sections per era/theme) that give real historical depth while remaining accessible and trustworthy.
+- Make navigation simple and obvious: prominent /eras and /themes hubs + persistent top nav.
+- Provide two high-quality interactive tools:
+  - Genealogy explorer (Rurikid and Romanov dynasties with lineage highlighting and details).
+  - Historical Maps prototype (period switcher + layers, with room to grow).
+- Use complementary visuals (generated images and short videos) strictly for atmosphere and sense of place — never as evidence.
+- Maintain excellent typography, reading comfort, reader progress, and responsive design.
+- Keep the technical stack simple, maintainable, and fast (Next.js + Tailwind + targeted React libraries like React Flow and MapLibre).
+- Reach a state that feels "close to completion" on the core content spine + key interactives.
 
-### Non-Goals (Explicit Boundaries)
-- Not a general encyclopedia or news site; no coverage of non-Russian post-Soviet states except in direct imperial/Soviet context.
-- Not a primary research archive (no bulk TEI/XML manuscript transcriptions at launch; focus on curated excerpts).
-- Not real-time political commentary or breaking news.
-- No user-generated content beyond private annotations/notes (public comments deferred).
-- No full bilingual parallel text at launch (Russian translations prioritized for key sections in Phase 3+).
-- No mobile native apps (responsive web first; PWA possible later).
-- No on-site video lectures or MOOC features (embed existing scholarly video where licensed).
-- Avoid heavy real-time collaboration or multiplayer features initially.
+### Non-Goals (What We Are Explicitly NOT Doing)
+- No heavy academic debate apparatus, formal multi-historians citation requirements, or DebateCallout components.
+- No complex MDX + Zod content pipeline or automated scholarly validation.
+- No user accounts, annotations (Hypothesis), or synced personal notes (Supabase).
+- No advanced semantic search (Typesense) at this stage — basic client-side search is sufficient.
+- No 20+ production maps or 6+ full genealogy trees at launch. The two interactive prototypes are the priority.
+- No institutional premium features, grants infrastructure, or complex sustainability model in the initial build.
+- Keep scope focused on one excellent narrative history site rather than an expandable academic platform.
 
 ---
 
-## Proposed Design
+## Proposed Design (Current Simplified Reality)
 
 ### High-Level Architecture
 
-The platform is a hybrid static + dynamic web application optimized for reading and discovery.
+The site is a clean Next.js 15 application focused on excellent reading experience and two primary interactive tools (Genealogy + Maps).
 
-```mermaid
-flowchart TB
-    subgraph ContentLayer["Content Layer (Git + Build Time)"]
-        MDX[MDX Files: /content/eras /figures /themes /sources]
-        Schema[Zod + TS Frontmatter Validation]
-        Build[Next.js Build: SSG + On-demand ISR]
-    end
+**Current stack (kept simple and maintainable):**
+- Next.js 15 App Router + TypeScript + Tailwind
+- Reader chapters written as substantial React components with clean prose
+- Genealogy: React Flow with JSON data (Rurikids + Romanovs)
+- Maps: MapLibre GL prototype with period switching
+- Visuals: Next.js Image optimization for all generated atmospheric assets
+- Light client-side search (Fuse.js sufficient)
+- Framer Motion used sparingly and with reduced-motion respect
 
-    subgraph CoreApp["Next.js 15 App (Vercel)"]
-        AppRouter[App Router + RSC + Partial Prerendering]
-        Reader[Reader Shell: Typography, Modes, Progress, Export]
-        Components["Interactive Islands (React 19): Maps, Trees, Timelines, Search"]
-    end
+**Intentionally avoided in current phase:**
+- MDX pipeline
+- Complex backend services (Supabase, Typesense, Hypothesis)
+- Heavy content schemas or academic validation tooling
 
-    subgraph Services["External / Self-hosted Services"]
-        Typesense[Typesense (Hybrid + Vector Search)]
-        Supabase[(Supabase: Auth + Postgres (user data) + Storage)]
-        R2[Cloudflare R2 + CDN: Images, Map Tiles, IIIF-derived]
-        Hypothesis[Hypothesis Annotation Service (self-hostable)]
-    end
-
-    Users[Readers / Scholars] --> AppRouter
-    AppRouter --> Reader
-    AppRouter --> Components
-    Components <--> Typesense
-    Reader --> Hypothesis
+The design prioritizes fast content production, clear navigation (/eras + /themes), and a calm, professional reading experience over building a full scholarly research platform.
     Reader --> Supabase
     Build --> Typesense[Index at build]
     Build --> Supabase[Optional seed]
@@ -1032,9 +1072,29 @@ This section explicitly records the most consequential architectural, content, p
 
 ---
 
-## PR Plan
+## PR Plan (Original — Largely Superseded)
 
-The following is a realistic, ordered sequence of independently reviewable and mergeable pull requests suitable for a small-to-medium engineering team working with dedicated academic advisors. Each PR delivers incremental user or author value and can be deployed to preview/staging immediately after merge. Total estimated timeline for core launch (through PR 18): 9–14 months depending on content authoring bandwidth.
+**Note (Current Reality):** The original heavy 18-PR academic platform plan was pruned. We are now building a focused, high-quality narrative history site with clean navigation and two main interactive tools.
+
+**Current Status (as of this update):**
+- Navigation simplified and working (/eras + /themes hubs + clean persistent nav).
+- Core era chapters have substantial real content (Kievan Rus', Mongol/Muscovy, Imperial 19th c., Revolutionary, Soviet, 1990s, Putin era).
+- Key thematics expanded (WWII Eastern Front, Holodomor).
+- Genealogy explorer functional and improved.
+- Maps prototype in place.
+- Visuals integrated and optimized.
+
+**Remaining Work (Realistic Short List):**
+- Finish filling remaining thematic essays.
+- Improve Maps (more periods, better data, time slider).
+- Final content polish + consistency pass across all chapters.
+- Minor UX polish (search, mobile, links).
+
+No need for the old complex PR sequence. We are in "finish the core narrative site" mode.
+
+---
+
+The following is the *original* sequence (largely superseded):
 
 **PR 1: Repository Foundation, Tooling, and CI/CD**  
 Files/components: `.github/workflows/`, `package.json`, `tsconfig.json`, `next.config.ts`, `eslint.config.mjs`, `.prettierrc`, basic `app/layout.tsx` + root error/loading, `README.md`, license file.  

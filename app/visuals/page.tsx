@@ -14,7 +14,7 @@ export default function VisualsGallery() {
     <div className="max-w-6xl mx-auto px-6 py-12">
       <h1 className="text-5xl font-medium mb-4">Complementary Visual Archive</h1>
       <p className="max-w-2xl text-lg text-[#3f372f] mb-10">
-        All images on this site are strictly atmospheric and mnemonic. They are generated or curated to support the reading experience, never to replace the text, citations, or historiographical debate.
+        All images on this site are strictly atmospheric. They exist to evoke place and mood, never to stand in for the historical narrative.
       </p>
 
       <div className="grid md:grid-cols-2 gap-8">

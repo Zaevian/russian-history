@@ -3,18 +3,14 @@ export default function AboutPage() {
     <div className="max-w-3xl mx-auto px-6 py-16">
       <h1 className="text-5xl font-medium mb-8">About This Project</h1>
       
-      <div className="prose text-lg">
-        <p>RussiaHistory.org is an attempt to create a world-class digital scholarly reference for the entire history of Russia, built to the standards of the best university textbooks.</p>
+      <div className="prose text-lg text-[#1a1816]">
+        <p>RussiaHistory.org exists to tell the full story of Russia — from the earliest Slavic settlements on the great rivers of Eastern Europe to the present day — in a single, readable, serious narrative.</p>
 
-        <p>The project follows a detailed implementation plan that prioritizes:</p>
-        
-        <ul>
-          <li>Strict scholarly rigor — every interpretive claim supported by multiple prominent historians with explicit debate presentation.</li>
-          <li>Complementary visuals only — images and videos enhance the reading experience but never substitute for text and citations.</li>
-          <li>Thoughtful use of technology — Framer Motion for comprehension, not decoration; excellent performance and accessibility.</li>
-        </ul>
+        <p>The site is written for the general reader and the student who wants more than a textbook summary but does not need a specialized monograph. It aims for breadth without sacrificing depth, and for honesty about the difficult and often tragic parts of the story without descending into polemic.</p>
 
-        <p>This is an early but ambitious build. The full vision is described in the design document linked from the homepage.</p>
+        <p>The visuals throughout are strictly atmospheric and complementary. They are meant to evoke place and mood, never to stand in for evidence or argument. The knowledge lives in the text.</p>
+
+        <p>Navigation is organized around two simple axes: <a href="/eras" className="underline">Eras</a> (chronological) and <a href="/themes" className="underline">Themes</a> (cross-cutting questions). The interactive Genealogy and Maps sections offer different ways into the same material.</p>
       </div>
 
       <div className="mt-12">

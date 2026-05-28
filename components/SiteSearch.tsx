@@ -9,7 +9,7 @@ const sampleContent = [
     id: 1, 
     title: "The Origins of Kievan Rus'", 
     era: "Pre-State & Kievan Rus'", 
-    excerpt: "The emergence of Kievan Rus' in the ninth and tenth centuries represents one of the most consequential state-formation processes in medieval Europe.",
+    excerpt: "Archaeology, dirham hoards, dendrochronology, and ancient DNA now let us see the rise of Kievan Rus' with a clarity the chronicles alone could never provide — from Staraya Ladoga in 753 to the silver crisis and the Mongol storm.",
     href: "/demo/reader"
   },
   { 
@@ -23,7 +23,7 @@ const sampleContent = [
     id: 3, 
     title: "The Normanist Debate", 
     era: "Pre-State & Kievan Rus'", 
-    excerpt: "Few questions in early Russian history have generated more scholarly passion than the origins of the term 'Rus''.",
+    excerpt: "Archaeology and genetics show small Norse elites rapidly admixing with Slavic populations along the river routes — the material reality behind the chronicle’s invitation legend.",
     href: "/demo/reader"
   },
 ];

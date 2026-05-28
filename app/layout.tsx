@@ -3,8 +3,8 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "RussiaHistory.org — A Scholarly History of Russia",
-  description: "A comprehensive, university-level digital reference for the full history of Russia, from the pre-state period to the present. Every claim backed by multiple prominent historians.",
+  title: "RussiaHistory.org — The History of Russia",
+  description: "A comprehensive, readable history of Russia from the earliest Slavic settlements to the present day. Broad in scope, rich in detail, written for the serious general reader and student.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -20,15 +20,14 @@ export default function RootLayout({
       <body className="font-serif">
         <nav className="border-b bg-white/80 backdrop-blur sticky top-0 z-50 text-sm">
           <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-            <Link href="/" className="font-medium">RussiaHistory.org</Link>
-            <div className="flex gap-5 text-[#5c5146]">
-              <a href="/demo/reader">Reader</a>
-              <a href="/demo/interactive">Interactive</a>
-              <a href="/demo/maps">Maps</a>
-              <a href="/demo/genealogy">Genealogy</a>
-              <a href="/visuals">Visuals</a>
-              <a href="/about">About</a>
-              <a href="/design">Design</a>
+            <Link href="/" className="font-medium tracking-tight">RussiaHistory.org</Link>
+            <div className="flex gap-6 text-[#5c5146]">
+              <Link href="/eras" className="hover:text-[#1a1816] transition-colors">Eras</Link>
+              <Link href="/themes" className="hover:text-[#1a1816] transition-colors">Themes</Link>
+              <Link href="/demo/genealogy" className="hover:text-[#1a1816] transition-colors">Genealogy</Link>
+              <Link href="/demo/maps" className="hover:text-[#1a1816] transition-colors">Maps</Link>
+              <Link href="/visuals" className="hover:text-[#1a1816] transition-colors">Visuals</Link>
+              <Link href="/about" className="hover:text-[#1a1816] transition-colors">About</Link>
             </div>
           </div>
         </nav>
@@ -38,12 +37,12 @@ export default function RootLayout({
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between gap-y-4">
               <div>
-                RussiaHistory.org — A scholarly digital reference built according to the plan in <a href="/design" className="underline">the design document</a>.
+                RussiaHistory.org — A comprehensive history of Russia from the pre-state period to the present.
               </div>
               <div className="flex gap-5">
-                <a href="/about">About the Project</a>
-                <a href="/visuals">Visual Archive</a>
-                <span>CC-BY-NC-SA for core content</span>
+                <Link href="/about">About</Link>
+                <Link href="/visuals">Visual Archive</Link>
+                <span>CC-BY-NC-SA</span>
               </div>
             </div>
           </div>
