@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build", // Using webpack for stable production builds. Turbopack has resolution issues with pnpm + @swc/helpers in this environment (dev still uses Turbopack for speed).
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",

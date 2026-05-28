@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function VisualsGallery() {
   const visuals = [
     { file: "kievan-rus-hero.jpg", title: "Kievan Rus' Settlement", era: "Pre-State & Kievan Rus'" },
@@ -18,11 +20,14 @@ export default function VisualsGallery() {
       <div className="grid md:grid-cols-2 gap-8">
         {visuals.map((v, i) => (
           <div key={i}>
-            <img 
-              src={`/assets/visuals/${v.file}`} 
-              alt={v.title}
-              className="w-full rounded shadow-lg"
-            />
+            <div className="relative aspect-[16/9]">
+              <Image 
+                src={`/assets/visuals/${v.file}`} 
+                alt={v.title}
+                fill
+                className="rounded shadow-lg object-cover"
+              />
+            </div>
             <div className="mt-3">
               <div className="font-medium">{v.title}</div>
               <div className="text-sm text-[#5c5146]">{v.era}</div>

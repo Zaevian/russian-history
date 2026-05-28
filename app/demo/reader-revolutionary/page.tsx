@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function RevolutionaryReader() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 bg-[#f8f5f0] min-h-screen text-[#1a1816]">
@@ -11,7 +13,9 @@ export default function RevolutionaryReader() {
         <p>The Revolution of 1905 was the first major dress rehearsal for the upheavals that would destroy the Romanov autocracy twelve years later.</p>
 
         <div className="my-10 border border-[#d4c9b8] bg-white p-6 rounded">
-          <img src="/assets/visuals/petrograd-1917.jpg" alt="Petrograd 1917" className="w-full rounded mb-4" />
+          <div className="relative aspect-[16/9] mb-4">
+            <Image src="/assets/visuals/petrograd-1917.jpg" alt="Petrograd 1917" fill className="rounded object-cover" />
+          </div>
           <p className="text-sm text-[#3f372f] italic">The atmosphere in the capital in early 1917 captured the moment when centuries of autocratic rule finally cracked under the weight of war, economic collapse, and popular anger.</p>
         </div>
 

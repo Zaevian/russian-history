@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function CollectivizationReader() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 bg-[#f8f5f0] min-h-screen text-[#1a1816]">
@@ -11,7 +13,9 @@ export default function CollectivizationReader() {
         <p>Stalin's forced collectivization of agriculture (1929–1933) was one of the most catastrophic policies of the 20th century. It destroyed the traditional peasant way of life and led to the deaths of millions through famine, particularly in Ukraine (the Holodomor).</p>
 
         <div className="my-10 border border-[#d4c9b8] bg-white p-6 rounded">
-          <img src="/assets/visuals/siberian-dawn.jpg" alt="Siberian landscape" className="w-full rounded mb-4" />
+          <div className="relative aspect-[16/9] mb-4">
+            <Image src="/assets/visuals/siberian-dawn.jpg" alt="Siberian landscape" fill className="rounded object-cover" />
+          </div>
           <p className="text-sm text-[#3f372f] italic">The human cost of rapid industrialization and collectivization was borne disproportionately by the peasantry. The regime treated the countryside as a resource to be extracted.</p>
         </div>
 

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function MongolReaderDemo() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 bg-[#f8f5f0] min-h-screen text-[#1a1816]">
@@ -12,11 +14,14 @@ export default function MongolReaderDemo() {
 
         <div className="my-10 border border-[#d4c9b8] bg-white p-6 rounded">
           <div className="uppercase text-xs tracking-widest text-[#5c5146] mb-2">COMPLEMENTARY VISUAL</div>
-          <img 
-            src="/assets/visuals/mongol-steppe.jpg" 
-            alt="Vast Eurasian steppe under a brooding sky at dusk during the Mongol period."
-            className="w-full rounded mb-4"
-          />
+          <div className="relative aspect-[16/9] mb-4">
+            <Image 
+              src="/assets/visuals/mongol-steppe.jpg" 
+              alt="Vast Eurasian steppe under a brooding sky at dusk during the Mongol period."
+              fill
+              className="rounded object-cover"
+            />
+          </div>
           <p className="text-sm text-[#3f372f] italic">The immense scale of the steppe made centralized control from the south difficult and favored the rise of northern principalities that could negotiate effectively with the Horde.</p>
         </div>
 

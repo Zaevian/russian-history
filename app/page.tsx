@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const eras = [
   { slug: 'pre-state-kievan', label: 'Pre-State & Kievan Rus', years: 'c. 750–1240' },
@@ -64,10 +65,12 @@ export default function RussiaHistoryLanding() {
             COMPLEMENTARY VISUAL — KIEVAN RUS' ERA
           </div>
           <div className="relative aspect-[16/9] bg-black overflow-hidden rounded-sm shadow-2xl">
-            <img 
+            <Image 
               src="/assets/visuals/kievan-rus-hero.jpg" 
               alt="Atmospheric view of a medieval Slavic river settlement with wooden churches at sunset."
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-10">
               <div className="max-w-2xl text-white text-lg">
@@ -116,6 +119,10 @@ export default function RussiaHistoryLanding() {
               <div className="flex flex-wrap gap-3 text-sm">
                 <Link href="/demo/reader-collectivization" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Collectivization &amp; Holodomor</Link>
                 <Link href="/demo/reader-ww2" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Eastern Front / Great Patriotic War</Link>
+                <Link href="/demo/reader-thaw" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Khrushchev Thaw</Link>
+                <Link href="/demo/reader-stagnation" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Brezhnev Stagnation</Link>
+                <Link href="/demo/reader-perestroika" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Perestroika &amp; Collapse</Link>
+                <Link href="/demo/reader-nationality" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Nationality Question (Thematic)</Link>
               </div>
             </div>
           </div>
@@ -123,15 +130,21 @@ export default function RussiaHistoryLanding() {
 
         <div className="mt-20 grid md:grid-cols-3 gap-6">
           <div>
-            <img src="/assets/visuals/winter-palace-interior.jpg" alt="Winter Palace interior" className="rounded shadow" />
+            <div className="relative aspect-[16/9]">
+              <Image src="/assets/visuals/winter-palace-interior.jpg" alt="Winter Palace interior" fill className="rounded shadow object-cover" />
+            </div>
             <div className="text-xs mt-2 text-[#5c5146]">Late Imperial power and isolation</div>
           </div>
           <div>
-            <img src="/assets/visuals/siberian-dawn.jpg" alt="Siberian landscape" className="rounded shadow" />
+            <div className="relative aspect-[16/9]">
+              <Image src="/assets/visuals/siberian-dawn.jpg" alt="Siberian landscape" fill className="rounded shadow object-cover" />
+            </div>
             <div className="text-xs mt-2 text-[#5c5146]">The scale of the Gulag system (use with care)</div>
           </div>
           <div>
-            <img src="/assets/visuals/petrograd-1917.jpg" alt="Petrograd 1917" className="rounded shadow" />
+            <div className="relative aspect-[16/9]">
+              <Image src="/assets/visuals/petrograd-1917.jpg" alt="Petrograd 1917" fill className="rounded shadow object-cover" />
+            </div>
             <div className="text-xs mt-2 text-[#5c5146]">February 1917 — the old world cracking</div>
           </div>
         </div>

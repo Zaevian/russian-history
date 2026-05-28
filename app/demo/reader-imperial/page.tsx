@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function ImperialReader() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 bg-[#f8f5f0] min-h-screen text-[#1a1816]">
@@ -11,7 +13,9 @@ export default function ImperialReader() {
         <p>The Romanov dynasty ruled Russia for over three centuries. Their autocratic system combined immense personal power with a vast bureaucracy and a nobility that was both privileged and dependent on the throne.</p>
 
         <div className="my-10 border border-[#d4c9b8] bg-white p-6 rounded">
-          <img src="/assets/visuals/winter-palace-interior.jpg" alt="Winter Palace interior" className="w-full rounded mb-4" />
+          <div className="relative aspect-[16/9] mb-4">
+            <Image src="/assets/visuals/winter-palace-interior.jpg" alt="Winter Palace interior" fill className="rounded object-cover" />
+          </div>
           <p className="text-sm text-[#3f372f] italic">The Winter Palace symbolized both the grandeur and the isolation of the imperial court. Decisions affecting millions were made in rooms like these.</p>
         </div>
 

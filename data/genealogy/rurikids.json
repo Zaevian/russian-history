@@ -1,0 +1,64 @@
+[
+  {
+    "id": "rurik",
+    "name": "Rurik",
+    "reign": "862–879",
+    "title": "Prince of Novgorod",
+    "x": 100,
+    "y": 50
+  },
+  {
+    "id": "oleg",
+    "name": "Oleg the Wise",
+    "reign": "879–912",
+    "title": "Prince of Novgorod & Kiev",
+    "parent": "rurik",
+    "x": 300,
+    "y": 50
+  },
+  {
+    "id": "igor",
+    "name": "Igor of Kiev",
+    "reign": "912–945",
+    "title": "Prince of Kiev",
+    "parent": "oleg",
+    "x": 500,
+    "y": 50
+  },
+  {
+    "id": "olga",
+    "name": "Olga of Kiev",
+    "reign": "945–962 (regent)",
+    "title": "Princess Regent",
+    "parent": "igor",
+    "x": 700,
+    "y": 50
+  },
+  {
+    "id": "sviatoslav",
+    "name": "Sviatoslav I",
+    "reign": "962–972",
+    "title": "Grand Prince of Kiev",
+    "parent": "olga",
+    "x": 400,
+    "y": 180
+  },
+  {
+    "id": "vladimir",
+    "name": "Vladimir the Great",
+    "reign": "980–1015",
+    "title": "Grand Prince of Kiev",
+    "parent": "sviatoslav",
+    "x": 600,
+    "y": 180
+  },
+  {
+    "id": "yaroslav",
+    "name": "Yaroslav the Wise",
+    "reign": "1019–1054",
+    "title": "Grand Prince of Kiev",
+    "parent": "vladimir",
+    "x": 800,
+    "y": 180
+  }
+]

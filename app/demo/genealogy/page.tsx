@@ -1,9 +1,4 @@
-import dynamic from 'next/dynamic';
-
-const GenealogyTree = dynamic(() => import('@/components/GenealogyTree').then(mod => ({ default: mod.GenealogyTree })), {
-  ssr: false,
-  loading: () => <div className="h-[420px] border border-[#d4c9b8] rounded-xl flex items-center justify-center">Loading interactive genealogy tree...</div>
-});
+import { GenealogyTree } from '@/components/GenealogyTree';
 
 export default function GenealogyDemo() {
   return (
@@ -20,7 +15,7 @@ export default function GenealogyDemo() {
       <GenealogyTree />
 
       <div className="mt-8 text-sm text-[#5c5146]">
-        Full production version will load from <code>/data/genealogy/rurikids.json</code> + <code>romanovs.json</code> with custom node types and export to SVG/PNG.
+        This component now loads real structured data from <code>/data/genealogy/rurikids.json</code>. The full version will also load Romanov data and include rich portrait nodes from our generated visual assets.
       </div>
     </div>
   );

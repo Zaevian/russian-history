@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function PostSovietReader() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 bg-[#f8f5f0] min-h-screen text-[#1a1816]">
@@ -11,7 +13,9 @@ export default function PostSovietReader() {
         <p>The collapse of the Soviet Union in December 1991 was the most dramatic geopolitical event of the late 20th century. Russia emerged as the largest successor state, but with a profound identity crisis.</p>
 
         <div className="my-10 border border-[#d4c9b8] bg-white p-6 rounded">
-          <img src="/assets/visuals/red-square-blue-hour.jpg" alt="Red Square at blue hour" className="w-full rounded mb-4" />
+          <div className="relative aspect-[16/9] mb-4">
+            <Image src="/assets/visuals/red-square-blue-hour.jpg" alt="Red Square at blue hour" fill className="rounded object-cover" />
+          </div>
           <p className="text-sm text-[#3f372f] italic">Red Square at twilight in the post-Soviet era — a space loaded with centuries of Russian history, now at the center of a country searching for a new national narrative.</p>
         </div>
 

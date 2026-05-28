@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const timelineEvents = [
   {
@@ -82,10 +83,11 @@ export default function InteractiveTimeline() {
                 className="bg-white rounded-2xl overflow-hidden border border-[#d4c9b8] shadow-sm"
               >
                 <div className="relative aspect-[16/9]">
-                  <img 
+                  <Image 
                     src={currentEvent.visual} 
                     alt={currentEvent.title}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 p-8 text-white">

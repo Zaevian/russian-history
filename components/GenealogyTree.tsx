@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ReactFlow,
   MiniMap,
@@ -15,33 +15,71 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-const initialNodes: Node[] = [
-  { id: '1', position: { x: 100, y: 50 }, data: { label: 'Rurik\n862–879' }, style: { background: '#f8f5f0', border: '1px solid #3f372f' } },
-  { id: '2', position: { x: 300, y: 50 }, data: { label: 'Oleg\n879–912' }, style: { background: '#f8f5f0', border: '1px solid #3f372f' } },
-  { id: '3', position: { x: 500, y: 50 }, data: { label: 'Igor\n912–945' }, style: { background: '#f8f5f0', border: '1px solid #3f372f' } },
-  { id: '4', position: { x: 700, y: 50 }, data: { label: 'Olga (regent)\n945–962' }, style: { background: '#f8f5f0', border: '1px solid #3f372f' } },
-  { id: '5', position: { x: 400, y: 200 }, data: { label: 'Sviatoslav I\n962–972' }, style: { background: '#f8f5f0', border: '1px solid #3f372f' } },
-  { id: '6', position: { x: 600, y: 200 }, data: { label: 'Vladimir the Great\n980–1015' }, style: { background: '#f8f5f0', border: '1px solid #3f372f' } },
-  { id: '7', position: { x: 800, y: 200 }, data: { label: 'Yaroslav the Wise\n1019–1054' }, style: { background: '#f8f5f0', border: '1px solid #3f372f' } },
-];
-
-const initialEdges: Edge[] = [
-  { id: 'e1-2', source: '1', target: '2', animated: true },
-  { id: 'e2-3', source: '2', target: '3', animated: true },
-  { id: 'e3-4', source: '3', target: '4', animated: true },
-  { id: 'e4-5', source: '4', target: '5', animated: true },
-  { id: 'e5-6', source: '5', target: '6', animated: true },
-  { id: 'e6-7', source: '6', target: '7', animated: true },
-];
+interface RulerData {
+  id: string;
+  name: string;
+  reign: string;
+  title: string;
+  parent?: string;
+  x: number;
+  y: number;
+}
 
 export function GenealogyTree() {
-  const [nodes, _setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [rawData, setRawData] = useState<RulerData[]>([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
-  const onConnect = useCallback(
-    (params: Connection | Edge) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
-  );
+  // Load structured data from JSON
+  useEffect(() => {
+    fetch('/data/genealogy/rurikids.json')
+      .then(res => res.json())
+      .then((data: RulerData[]) => {
+        setRawData(data);
+
+        // Convert JSON data to React Flow nodes
+        const flowNodes: Node[] = data.map(ruler => ({
+          id: ruler.id,
+          position: { x: ruler.x, y: ruler.y },
+          data: { 
+            label: (
+              <div className="text-center p-1">
+                <div className="font-semibold text-sm">{ruler.name}</div>
+                <div className="text-xs text-[#5c5146]">{ruler.reign}</div>
+                <div className="text-[10px] text-[#3f372f] mt-0.5">{ruler.title}</div>
+              </div>
+            ) 
+          },
+          style: { 
+            background: '#f8f5f0', 
+            border: '1px solid #3f372f',
+            borderRadius: '8px',
+            padding: '4px 8px',
+            minWidth: '140px'
+          }
+        }));
+
+        setNodes(flowNodes);
+
+        // Generate edges from parent relationships in the data
+        const flowEdges: Edge[] = data
+          .filter(ruler => ruler.parent)
+          .map(ruler => ({
+            id: `e-${ruler.parent}-${ruler.id}`,
+            source: ruler.parent!,
+            target: ruler.id,
+            animated: true,
+            style: { stroke: '#d4c9b8' }
+          }));
+
+        setEdges(flowEdges);
+      })
+      .catch(() => {
+        console.log('Genealogy data not found - using empty tree');
+      });
+  }, [setNodes, setEdges]);
+
+  const onConnect = (params: Connection | Edge) => setEdges((eds) => addEdge(params, eds));
 
   return (
     <div className="h-[420px] border border-[#d4c9b8] rounded-xl overflow-hidden">
