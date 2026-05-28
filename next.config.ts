@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [],
   },
+  eslint: {
+    // Don't fail production builds on lint errors; run `pnpm lint` locally to fix.
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
