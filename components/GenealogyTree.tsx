@@ -30,8 +30,8 @@ interface RulerData {
 export function GenealogyTree() {
   const [dynasty, setDynasty] = useState<'rurikid' | 'romanov'>('rurikid');
   const [currentData, setCurrentData] = useState<RulerData[]>([]);
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [lineage, setLineage] = useState<string[]>([]);
 
