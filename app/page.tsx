@@ -19,10 +19,10 @@ export default function RussiaHistoryLanding() {
           <div className="font-medium">RussiaHistory.org</div>
           <div className="flex gap-6 text-[#5c5146]">
             <a href="#eras">Eras</a>
-            <a href="/demo/reader">Reader Demo</a>
-            <a href="/visuals">Visuals</a>
-            <a href="/about">About</a>
-            <a href="/design">Design</a>
+            <Link href="/demo/reader">Reader Demo</Link>
+            <Link href="/visuals">Visuals</Link>
+            <Link href="/about">About</Link>
+            <Link href="/design">Design</Link>
           </div>
         </div>
       </nav>
@@ -45,24 +45,24 @@ export default function RussiaHistoryLanding() {
           <a href="#eras" className="inline-block px-8 py-3 bg-[#1a1816] text-white rounded text-sm tracking-wide">
             Begin Reading
           </a>
-          <a href="/demo/reader" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
+          <Link href="/demo/reader" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             View Live Reader Demo
-          </a>
-          <a href="/demo/interactive" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
+          </Link>
+          <Link href="/demo/interactive" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             Interactive Timeline + Visuals
-          </a>
-          <a href="/demo/genealogy" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
+          </Link>
+          <Link href="/demo/genealogy" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             Genealogy Tree Demo
-          </a>
-          <a href="/design" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
+          </Link>
+          <Link href="/design" className="inline-block px-8 py-3 border border-[#1a1816] rounded text-sm tracking-wide hover:bg-white">
             Read the Full Design Document
-          </a>
+          </Link>
         </div>
 
         {/* Hero Visual - using one of our generated complementary assets */}
         <div className="mt-16">
           <div className="text-xs uppercase tracking-widest text-[#5c5146] mb-2">
-            COMPLEMENTARY VISUAL — KIEVAN RUS' ERA
+            COMPLEMENTARY VISUAL — KIEVAN RUS ERA
           </div>
           <div className="relative aspect-[16/9] bg-black overflow-hidden rounded-sm shadow-2xl">
             <Image 
@@ -105,7 +105,7 @@ export default function RussiaHistoryLanding() {
                   className="group block border border-[#d4c9b8] p-6 rounded hover:border-[#3f372f] transition-colors"
                 >
                   <div className="flex justify-between items-baseline">
-                    <div className="text-xl group-hover:underline">{era.label}</div>
+                    <div className="text-xl group-hover:underline">{era.label.replace("'", "")}</div>
                     <div className="text-xs text-[#5c5146] font-mono">{era.years}</div>
                   </div>
                   <div className="text-sm text-[#5c5146] mt-1">View sample chapter with visuals →</div>
@@ -122,7 +122,13 @@ export default function RussiaHistoryLanding() {
                 <Link href="/demo/reader-thaw" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Khrushchev Thaw</Link>
                 <Link href="/demo/reader-stagnation" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Brezhnev Stagnation</Link>
                 <Link href="/demo/reader-perestroika" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Perestroika &amp; Collapse</Link>
-                <Link href="/demo/reader-nationality" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Nationality Question (Thematic)</Link>
+                <Link href="/demo/reader-nationality" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Nationality Question</Link>
+                <Link href="/demo/reader-autocracy" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">The Nature of Russian Autocracy</Link>
+                <Link href="/demo/reader-holodomor" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">The Holodomor (Thematic)</Link>
+                <Link href="/demo/reader-everyday-soviet" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Everyday Life in Late Socialism</Link>
+                <Link href="/demo/reader-1990s-reforms" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">1990s Shock Therapy &amp; Oligarchs</Link>
+                <Link href="/demo/reader-putin" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">The Putin Era</Link>
+                <Link href="/demo/reader-orthodoxy" className="px-4 py-2 border border-[#d4c9b8] rounded hover:border-[#3f372f]">Orthodoxy and the State (Thematic)</Link>
               </div>
             </div>
           </div>

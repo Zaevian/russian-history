@@ -26,18 +26,17 @@ interface RulerData {
 }
 
 export function GenealogyTree() {
-  const [rawData, setRawData] = useState<RulerData[]>([]);
+  const [dynasty, setDynasty] = useState<'rurikid' | 'romanov'>('rurikid');
+  const [, setRawData] = useState<RulerData[]>([]);
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
-  // Load structured data from JSON
-  useEffect(() => {
-    fetch('/data/genealogy/rurikids.json')
+  const loadDynasty = (selected: 'rurikid' | 'romanov') => {
+    const file = selected === 'rurikid' ? 'rurikids.json' : 'romanovs.json';
+    fetch(`/data/genealogy/${file}`)
       .then(res => res.json())
       .then((data: RulerData[]) => {
         setRawData(data);
-
-        // Convert JSON data to React Flow nodes
         const flowNodes: Node[] = data.map(ruler => ({
           id: ruler.id,
           position: { x: ruler.x, y: ruler.y },
@@ -58,10 +57,8 @@ export function GenealogyTree() {
             minWidth: '140px'
           }
         }));
-
         setNodes(flowNodes);
 
-        // Generate edges from parent relationships in the data
         const flowEdges: Edge[] = data
           .filter(ruler => ruler.parent)
           .map(ruler => ({
@@ -71,31 +68,51 @@ export function GenealogyTree() {
             animated: true,
             style: { stroke: '#d4c9b8' }
           }));
-
         setEdges(flowEdges);
       })
       .catch(() => {
-        console.log('Genealogy data not found - using empty tree');
+        console.log('Genealogy data not found');
       });
-  }, [setNodes, setEdges]);
+  };
+
+  useEffect(() => {
+    loadDynasty(dynasty);
+  }, [dynasty, loadDynasty]);
 
   const onConnect = (params: Connection | Edge) => setEdges((eds) => addEdge(params, eds));
 
   return (
-    <div className="h-[420px] border border-[#d4c9b8] rounded-xl overflow-hidden">
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        fitView
-        attributionPosition="bottom-left"
-      >
-        <MiniMap />
-        <Controls />
-        <Background gap={16} color="#d4c9b8" />
-      </ReactFlow>
+    <div>
+      <div className="flex gap-2 mb-3">
+        <button 
+          onClick={() => setDynasty('rurikid')}
+          className={`px-3 py-1 text-sm rounded ${dynasty === 'rurikid' ? 'bg-[#3f372f] text-white' : 'border'}`}
+        >
+          Rurikids (Early)
+        </button>
+        <button 
+          onClick={() => setDynasty('romanov')}
+          className={`px-3 py-1 text-sm rounded ${dynasty === 'romanov' ? 'bg-[#3f372f] text-white' : 'border'}`}
+        >
+          Romanovs (Imperial)
+        </button>
+      </div>
+
+      <div className="h-[420px] border border-[#d4c9b8] rounded-xl overflow-hidden">
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          fitView
+          attributionPosition="bottom-left"
+        >
+          <MiniMap />
+          <Controls />
+          <Background gap={16} color="#d4c9b8" />
+        </ReactFlow>
+      </div>
     </div>
   );
 }

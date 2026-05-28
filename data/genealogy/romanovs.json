@@ -1,0 +1,74 @@
+[
+  {
+    "id": "michael",
+    "name": "Michael Romanov",
+    "reign": "1613–1645",
+    "title": "Tsar",
+    "parent": null,
+    "x": 100,
+    "y": 50
+  },
+  {
+    "id": "alexei",
+    "name": "Alexei I",
+    "reign": "1645–1676",
+    "title": "Tsar",
+    "parent": "michael",
+    "x": 300,
+    "y": 50
+  },
+  {
+    "id": "peter",
+    "name": "Peter the Great",
+    "reign": "1682–1725",
+    "title": "Emperor",
+    "parent": "alexei",
+    "x": 500,
+    "y": 50
+  },
+  {
+    "id": "catherine",
+    "name": "Catherine the Great",
+    "reign": "1762–1796",
+    "title": "Empress",
+    "parent": "peter",
+    "x": 700,
+    "y": 50
+  },
+  {
+    "id": "alexander1",
+    "name": "Alexander I",
+    "reign": "1801–1825",
+    "title": "Emperor",
+    "parent": "catherine",
+    "x": 400,
+    "y": 180
+  },
+  {
+    "id": "nicholas1",
+    "name": "Nicholas I",
+    "reign": "1825–1855",
+    "title": "Emperor",
+    "parent": "alexander1",
+    "x": 600,
+    "y": 180
+  },
+  {
+    "id": "alexander2",
+    "name": "Alexander II",
+    "reign": "1855–1881",
+    "title": "Emperor",
+    "parent": "nicholas1",
+    "x": 800,
+    "y": 180
+  },
+  {
+    "id": "nicholas2",
+    "name": "Nicholas II",
+    "reign": "1894–1917",
+    "title": "Emperor",
+    "parent": "alexander2",
+    "x": 1000,
+    "y": 180
+  }
+]
